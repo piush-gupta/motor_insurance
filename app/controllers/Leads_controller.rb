@@ -1,4 +1,3 @@
-# app/controllers/leads_controller.rb
 class LeadsController < ApplicationController
 
   def step1
@@ -37,10 +36,14 @@ class LeadsController < ApplicationController
   end
 
   def quote
-    @quote = rand(3000..8000)
+    @quote = {insurance_provider: get_company_name, amount: rand(3000..8000), }
   end
 
   private
+
+  def get_company_name
+    ('A'..'Z').to_a.sample(4).join + " Insurance Corp"
+  end
 
   def calculate_fraud(params)
     score = 0
