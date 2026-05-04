@@ -8,7 +8,6 @@ Reduce time-to-quote and improve conversion by:
 - Asking minimal inputs upfront
 - Showing quote range quickly
 - Detecting fraudulent submissions silently
-
 ---
 
 ## ⚙️ Features
