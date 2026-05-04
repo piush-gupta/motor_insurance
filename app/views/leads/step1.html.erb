@@ -1,0 +1,11 @@
+<%= form_with url: "/step1", method: :post do %>
+  Vehicle Number:
+  <%= text_field_tag :vehicle_reg, nil, required: true, pattern: "[A-Z]{2}[0-9]{1,2}[A-Z]{2,3}[0-9]{4}" %>
+
+  Mobile:
+  <%= text_field_tag :mobile, nil, required: true, pattern: "[6-9]{1}[0-9]{9}" %>
+
+  <%= hidden_field_tag :hidden_field %>
+
+  <%= submit_tag "Continue" %>
+<% end %>

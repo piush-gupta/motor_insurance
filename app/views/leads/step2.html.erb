@@ -1,0 +1,22 @@
+<% if flash[:errors] %>
+  <div style="color:red;">
+    <ul>
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with url: "/step2", method: :post do %>
+  Previous Insurer:
+  <%= text_field_tag :insurer, nil, required: true %>
+
+  NCB:
+  <%= select_tag :ncb, options_for_select(["0%", "20%"]) %>
+
+  Claims:
+  <%= select_tag :claims, options_for_select(["0", "1"]) %>
+
+  <%= submit_tag "See Quote" %>
+<% end %>
