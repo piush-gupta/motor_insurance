@@ -11,17 +11,17 @@
 <%= form_with url: "/step2", method: :post do %>
   Previous Policy Expiry Date:
   <%= date_field_tag :previous_policy_expiry_date, nil, required: true %>
-
+  <br/><br/>
   IDV Preference:
   <%= select_tag :idv_preference,
         options_for_select([["Low", "low"], ["Medium", "medium"], ["High", "high"]]),
         required: true %>
-
+  <br/><br/>
   NCB:
   <%= select_tag :ncb, options_for_select(["0%", "20%", "25%", "30%"]) %>
-
+  <br/><br/>
   Claims:
   <%= select_tag :claims, options_for_select(["0", "1", "2", "2+"]) %>
-
+  <br/><br/>
   <%= submit_tag "See Quote" %>
 <% end %>
