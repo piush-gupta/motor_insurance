@@ -87,9 +87,10 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: motor_insurance_production
-    username: motor_insurance
-    password: <%= ENV["MOTOR_INSURANCE_DATABASE_PASSWORD"] %>
+    url: <%= ENV['DATABASE_URL'] %>
+    #database: motor_insurance_production
+    #username: motor_insurance
+    #password: <%= ENV["MOTOR_INSURANCE_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: motor_insurance_production_cache
