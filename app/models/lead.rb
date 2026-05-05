@@ -1,7 +1,7 @@
 class Lead < ApplicationRecord
 
   # Presence validations
-  validates :vehicle_reg, :mobile, :insurer, presence: true
+  validates :vehicle_reg, :mobile, presence: true
 
   # Mobile: 10-digit Indian number
   validates :mobile,
@@ -16,6 +16,9 @@ class Lead < ApplicationRecord
               with: /\A[A-Z]{2}\d{1,2}[A-Z]{2,3}\d{4}\z/i,
               message: "must be valid (e.g., DL2DCA1234)"
             }
+
+  validates :previous_policy_expiry_date, presence: true
+  validates :idv_preference, inclusion: { in: %w[low medium high] }
 
   # Optional: Normalize data before validation
   before_validation :normalize_fields

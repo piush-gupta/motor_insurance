@@ -9,14 +9,19 @@
 <% end %>
 
 <%= form_with url: "/step2", method: :post do %>
-  Previous Insurer:
-  <%= text_field_tag :insurer, nil, required: true %>
+  Previous Policy Expiry Date:
+  <%= date_field_tag :previous_policy_expiry_date, nil, required: true %>
+
+  IDV Preference:
+  <%= select_tag :idv_preference,
+        options_for_select([["Low", "low"], ["Medium", "medium"], ["High", "high"]]),
+        required: true %>
 
   NCB:
-  <%= select_tag :ncb, options_for_select(["0%", "20%"]) %>
+  <%= select_tag :ncb, options_for_select(["0%", "20%", "25%", "30%"]) %>
 
   Claims:
-  <%= select_tag :claims, options_for_select(["0", "1"]) %>
+  <%= select_tag :claims, options_for_select(["0", "1", "2", "2+"]) %>
 
   <%= submit_tag "See Quote" %>
 <% end %>

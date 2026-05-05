@@ -1,4 +1,23 @@
-<h2>Your Quote</h2>
+<h2>Available Quotes</h2>
+<% cheapest = @quotes.min_by { |q| q[:amount] } %>
+<table border="1" cellpadding="10">
+  <tr>
+    <th>Insurance Provider</th>
+    <th>Premium Amount (₹)</th>
+  </tr>
 
-<p>Insurance Provider: <%= @quote[:insurance_provider] %></p>
-<p>Estimated Price: ₹<%= @quote[:amount] %></p>
+  <% @quotes.each do |quote| %>
+  <tr>
+    <td>
+      <%= quote[:insurance_provider] %>
+      <% if quote == cheapest %>
+        ⭐ Best Price
+      <% end %>
+    </td>
+    <td><%= quote[:amount] %></td>
+  </tr>
+<% end %>
+</table>
+<br><br>
+
+<%= link_to "⬅ Back to Home", root_path %>

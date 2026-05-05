@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_04_150546) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_05_160851) do
   create_table "leads", force: :cascade do |t|
     t.string "city"
     t.string "claims"
@@ -18,9 +18,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_04_150546) do
     t.string "email"
     t.integer "fraud_score"
     t.string "full_name"
+    t.string "idv_preference"
     t.string "insurer"
     t.string "mobile"
     t.string "ncb"
+    t.date "previous_policy_expiry_date"
     t.datetime "updated_at", null: false
     t.string "vehicle_reg"
   end

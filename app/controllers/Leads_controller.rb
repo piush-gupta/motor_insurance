@@ -20,9 +20,10 @@ class LeadsController < ApplicationController
 
   def step2_submit
     lead_data = session[:lead].merge(
-        insurer: params[:insurer],
         ncb: params[:ncb],
-        claims: params[:claims]
+        claims: params[:claims],
+        previous_policy_expiry_date: params[:previous_policy_expiry_date],
+        idv_preference: params[:idv_preference]
     )
 
     @lead = Lead.new(lead_data)
@@ -36,7 +37,20 @@ class LeadsController < ApplicationController
   end
 
   def quote
-    @quote = {insurance_provider: get_company_name, amount: rand(3000..8000), }
+    
+    base = rand(3000..8000)
+
+    # adjust based on IDV preference
+    idv = params[:idv_preference]
+
+    case idv
+    when "high"
+      base += 1000
+    when "low"
+      base -= 500
+    end
+
+    @quotes = build_quotes(base).sort_by { |q| q[:amount] }
   end
 
   private
@@ -45,12 +59,25 @@ class LeadsController < ApplicationController
     ('A'..'Z').to_a.sample(4).join + " Insurance Corp"
   end
 
-  def calculate_fraud(params)
-    score = 0
-
-    score += 1 if params[:hidden_field].present? # honeypot
-    score += 1 if params[:mobile].to_s.length != 10
-
-    score
+  def build_quotes(base_amount)
+    [
+      {
+        insurance_provider: get_company_name,
+        amount: base_amount + rand(100..500)
+      },
+      {
+        insurance_provider: get_company_name,
+        amount: base_amount - rand(50..300)
+      },
+      {
+        insurance_provider: get_company_name,
+        amount: base_amount + rand(0..200)
+      },
+      {
+        insurance_provider: get_company_name,
+        amount: base_amount - rand(100..200)
+      }
+    ]
   end
+
 end
