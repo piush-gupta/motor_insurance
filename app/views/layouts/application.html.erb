@@ -20,6 +20,66 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+
+  <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        margin: 0;
+      }
+    
+      .container {
+        max-width: 450px;
+        margin: 60px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+    
+      h2 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+    
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 15px;
+      }
+    
+      input, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+      }
+    
+      .btn {
+        margin-top: 20px;
+        width: 100%;
+        padding: 12px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    
+      .btn:hover {
+        background: #0056b3;
+      }
+    
+      .error {
+        background: #ffe6e6;
+        color: #b30000;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+    </style>
   </head>
 
   <body>
