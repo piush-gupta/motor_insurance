@@ -1,23 +1,27 @@
-<h2>Available Quotes</h2>
-<% cheapest = @quotes.min_by { |q| q[:amount] } %>
-<table border="1" cellpadding="10">
-  <tr>
-    <th>Insurance Provider</th>
-    <th>Premium Amount (₹)</th>
-  </tr>
+<div class="container">
+  <h2>Available Insurance Quotes</h2>
+
+  <% cheapest = @quotes.min_by { |q| q[:amount] } %>
 
   <% @quotes.each do |quote| %>
-  <tr>
-    <td>
-      <%= quote[:insurance_provider] %>
-      <% if quote == cheapest %>
-        ⭐ Best Price
-      <% end %>
-    </td>
-    <td><%= quote[:amount] %></td>
-  </tr>
-<% end %>
-</table>
-<br><br>
+    <div class="quote-card <%= 'best' if quote == cheapest %>">
+      
+      <div class="quote-header">
+        <strong><%= quote[:insurance_provider] %></strong>
+        <% if quote == cheapest %>
+          <span class="badge">Best Price</span>
+        <% end %>
+      </div>
 
-<%= link_to "⬅ Back to Home", root_path %>
+      <div class="quote-amount">
+        ₹<%= quote[:amount] %>
+      </div>
+
+      <button class="btn">Buy Now</button>
+    </div>
+  <% end %>
+
+  <br>
+  <%= link_to "⬅ Start New Quote", root_path, class: "btn-back" %>
+
+</div>
