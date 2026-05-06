@@ -1,11 +1,17 @@
-<%= form_with url: "/step1", method: :post do %>
-  Vehicle Number:
-  <%= text_field_tag :vehicle_reg, nil, required: true, pattern: "[A-Z]{2}[0-9]{1,2}[A-Z]{2,3}[0-9]{4}" %>
-  <br/><br/>
-  Mobile:
-  <%= text_field_tag :mobile, nil, required: true, pattern: "[6-9]{1}[0-9]{9}" %>
+<div class="container">
+  <h2>Get Your Instant Insurance Quote</h2>
 
-  <%= hidden_field_tag :hidden_field %>
-  <br/><br/>
-  <%= submit_tag "Continue" %>
-<% end %>
+  <%= form_with url: "/step1", method: :post do %>
+
+    <label>Vehicle Registration Number</label>
+    <%= text_field_tag :vehicle_reg, nil, placeholder: "DL09CA1234", required: true, pattern: "[A-Z]{2}[0-9]{1,2}[A-Z]{2,3}[0-9]{4}" %>
+
+    <label>Mobile Number</label>
+    <%= text_field_tag :mobile, nil, placeholder: "Enter 10-digit number", required: true, pattern: "[6-9]{1}[0-9]{9}" %>
+
+    <%= hidden_field_tag :hidden_field %>
+
+    <%= submit_tag "Continue", class: "btn" %>
+
+  <% end %>
+</div>
