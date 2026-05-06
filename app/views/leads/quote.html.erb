@@ -1,4 +1,23 @@
 <div class="container">
+
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="step completed">
+      <div class="circle">✓</div>
+      <div class="step-label">Basic Info</div>
+    </div>
+
+    <div class="step completed">
+      <div class="circle">✓</div>
+      <div class="step-label">Details</div>
+    </div>
+
+    <div class="step active">
+      <div class="circle">✓</div>
+      <div class="step-label">Quotes</div>
+    </div>
+  </div>
+
   <h2>Available Insurance Quotes</h2>
 
   <% cheapest = @quotes.min_by { |q| q[:amount] } %>
